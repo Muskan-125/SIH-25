@@ -4,7 +4,8 @@ import asyncHandler from "express-async-handler";
 // @desc Add new therapist profile
 // @route POST /api/therapists
 // @access Admin
-export const addTherapist = asyncHandler(async (req, res) => {
+export const 
+addTherapist = asyncHandler(async (req, res) => {
   const { user, certifications, experienceYears, specialties, bio, availableDays, availableTimeSlots } = req.body;
 
   const therapist = await Therapist.create({ 
@@ -18,6 +19,7 @@ export const addTherapist = asyncHandler(async (req, res) => {
 // @route GET /api/therapists
 // @access Public
 export const getTherapists = asyncHandler(async (req, res) => {
-  const therapists = await Therapist.find().populate("user", "firstName lastName email phone");
+  const therapists = await Therapist.find().populate("user", "fullName email phone");
+  console.log(therapists);
   res.json(therapists);
 });

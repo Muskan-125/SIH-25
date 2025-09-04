@@ -13,7 +13,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
   const user = await User.create({ fullName,  email, phone, password, role });
-  res.status(201).json(user);
+  res.status(201).json({ ok: true, message: "Account Created Successfully", user:user});
 });
 
 
@@ -35,7 +35,7 @@ export const LoginUser = asyncHandler(async (req, res) => {
     });
 
 
-    return res.status(200).json({ ok: true, message: "Login Successful" });
+    return res.status(200).json({ ok: true, message: "Login Successful", user: dataUser });
 
   } catch (error) {
     console.error("Error Logging in:", error);

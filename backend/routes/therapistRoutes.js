@@ -4,6 +4,6 @@ import { addTherapist, getTherapists } from "../controllers/therapistController.
 const router = express.Router();
 
 router.post("/", addTherapist);
-router.get("/", getTherapists);
+router.get("/get", getTherapists);
 
 export default router;
